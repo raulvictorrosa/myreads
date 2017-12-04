@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { PropTypes } from 'prop-types'
 
-class Book extends Component {
-  static propTypes = {
+const Book = (props) => {
+  Book.propTypes = {
     authors: PropTypes.arrayOf(PropTypes.string.isRequired),
     index: PropTypes.string.isRequired,
     imageLink: PropTypes.object.isRequired,
@@ -11,43 +11,42 @@ class Book extends Component {
     onShelfChange: PropTypes.func.isRequired
   }
 
-  changeShelf = (event) => {
-    this.props.onShelfChange(event.target.value)
+  const changeShelf = (event) => {
+    props.onShelfChange(event.target.value)
   }
 
-  render() {
-    const idBook = this.props.index
-    const imageLink = this.props.imageLink.thumbnail || this.props.imageLink.smallThumbnail
-    const { authors, shelf, title } = this.props
-    return (
-      <li id={idBook}>
-        <div className="book">
-          <div className="book-top">
-            <div className="book-cover" style={{
-              width: 128,
-              height: 193,
-              backgroundImage: `url(${imageLink})`
-            }}></div>
-            <div className="book-shelf-changer">
-              <select value={shelf} onChange={this.changeShelf}>
-                <option value="none" disabled>Move to...</option>
-                <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
-                <option value="read">Read</option>
-                <option value="none">None</option>
-              </select>
-            </div>
+  const idBook = props.index
+  const imageLink = props.imageLink.thumbnail || props.imageLink.smallThumbnail
+  const { authors, shelf, title } = props
+
+  return (
+    <li id={idBook}>
+      <div className="book">
+        <div className="book-top">
+          <div className="book-cover" style={{
+            width: 128,
+            height: 193,
+            backgroundImage: `url(${imageLink})`
+          }}></div>
+          <div className="book-shelf-changer">
+            <select value={shelf} onChange={changeShelf}>
+              <option value="none" disabled>Move to...</option>
+              <option value="currentlyReading">Currently Reading</option>
+              <option value="wantToRead">Want to Read</option>
+              <option value="read">Read</option>
+              <option value="none">None</option>
+            </select>
           </div>
-          <div className="book-title">{title}</div>
-          {authors && authors.map((author, index) => (
-            <div className="book-authors" key={index}>
-              {author}
-            </div>
-          ))}
         </div>
-      </li>
-    )
-  }
+        <div className="book-title">{title}</div>
+        {authors && authors.map((author, index) => (
+          <div className="book-authors" key={index}>
+            {author}
+          </div>
+        ))}
+      </div>
+    </li>
+  )
 }
 
 export default Book
