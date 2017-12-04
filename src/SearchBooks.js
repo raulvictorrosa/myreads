@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
-import * as BooksAPI from './BooksAPI'
+import { search } from './utils/BooksAPI'
 
 import Book from './Book'
 
@@ -34,7 +34,7 @@ class SearchBooks extends Component {
 
   searchBook = (value) => {
     if (value.length  !== 0) {
-      BooksAPI.search(value, 10).then((books) => {
+      search(value, 10).then((books) => {
         if (books.length > 0) {
           books = books.filter((book) => book.imageLinks)
           this.setState({ books })
