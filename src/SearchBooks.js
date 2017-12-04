@@ -32,11 +32,24 @@ class SearchBooks extends Component {
     this.searchBook(value)
   }
 
+  mergeShelf = (a, b) => {
+    return a.map((itemA) => {
+      b.forEach((itemB) => {
+        if (itemB.id === itemA.id) {
+          itemA.shelf = itemB.shelf
+          return
+        }
+      })
+      return itemA
+    })
+  }
+
   searchBook = (value) => {
     if (value.length  !== 0) {
       search(value, 10).then((books) => {
         if (books.length > 0) {
           books = books.filter((book) => book.imageLinks)
+          books = this.mergeShelf(books, this.props.books)
           this.setState({ books })
         } else {
           this.setState({ books: [] })
