@@ -40,6 +40,10 @@ class SearchBooks extends Component {
           itemA.shelf = itemB.shelf
           return
         }
+        if (itemA.shelf === undefined) {
+          itemA.shelf = `none`
+          return
+        }
       })
       return itemA
     })
