@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
 import { Debounce } from 'react-throttle'
-import { search } from './utils/BooksAPI'
+
+import { search } from '../utils/BooksAPI'
 
 import Book from './Book'
 
