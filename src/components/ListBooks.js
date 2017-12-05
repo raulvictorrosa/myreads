@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import sortBy from 'sort-by';
 
 import BookShelf from './BookShelf'
 
@@ -34,6 +35,9 @@ const ListBooks = (props) => {
   ]
 
   const { books, onShelfChange } = props
+
+  books.sort(sortBy('title')) // Organiza os livros em ordem alfabética
+
   return (
     <div className="list-books">
       <div className="list-books-title">

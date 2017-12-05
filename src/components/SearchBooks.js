@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import sortBy from 'sort-by';
 import { Debounce } from 'react-throttle'
 
 import { search } from '../utils/BooksAPI'
@@ -76,8 +75,6 @@ class SearchBooks extends Component {
     } else {
       showingBooks = this.props.books
     }
-
-    showingBooks.sort(sortBy('title')) // Organiza os contatos em ordem alfabética
 
     return (
       <div className="search-books">
