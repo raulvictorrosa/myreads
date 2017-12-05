@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import sortBy from 'sort-by';
-// import { Debounce } from 'react-throttle'
+import { Debounce } from 'react-throttle'
 import { search } from './utils/BooksAPI'
 
 import Book from './Book'
@@ -84,14 +84,13 @@ class SearchBooks extends Component {
           <Link className="close-search" to="/">Close</Link>
 
           <div className="search-books-input-wrapper">
-            {/* <Debounce time="400" handler="onChange"> */}
+            <Debounce time="400" handler="onChange">
               <input
                 type="text"
                 placeholder="Search by title or author"
-                value={query}
                 onChange={this.updateQuery}
               />
-            {/* </Debounce> */}
+            </Debounce>
           </div>
         </div>
         <div className="search-books-results">
