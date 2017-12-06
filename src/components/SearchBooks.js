@@ -38,12 +38,11 @@ class SearchBooks extends Component {
       b.forEach((itemB) => {
         if (itemB.id === itemA.id) {
           itemA.shelf = itemB.shelf
-          return
         }
         if (itemA.shelf === undefined) {
           itemA.shelf = `none`
-          return
         }
+        return
       })
       return itemA
     })
