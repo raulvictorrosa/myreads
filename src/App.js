@@ -21,9 +21,9 @@ class BooksApp extends Component {
     BooksAPI.update({ id }, shelf).then(() => {
       let found = this.state.books.find(b => b.id === id)
       found.shelf = shelf
-      this.setState({
-        books: this.state.books.filter(b => b.id !== found.id)
-      })
+      // this.setState({
+      //   books: this.state.books.filter(b => b.id !== found.id) // filtrando o livro fora do estado
+      // })
       this.setState({
         books: this.state.books.filter(b => b.id !== found.id).concat([found]) // Filtrando o livro fora do estado. E por fim add o livro no estado
       })
